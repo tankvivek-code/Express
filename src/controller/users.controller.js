@@ -13,7 +13,7 @@ export const getUsers = async (req, res) => {
 
 export const createUser = async (req, res) => {
   try {
-    await user.create({ username: "Vivek", password: "123" });
+    await user.create({ username: "Chaman", password: "222" });
     res.status(201).json({ message: "User created !" });
   } catch (error) {
     res
