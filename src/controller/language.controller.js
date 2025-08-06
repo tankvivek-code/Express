@@ -1,16 +1,23 @@
-export const getlanguages = (req, res) => {
-  res.status(200).json([
-    {
-      id: 1,
-      lang: "HTML",
-    },
-    {
-      id: 2,
-      lang: "CSS",
-    },
-    {
-      id: 3,
-      lang: "JavaScript",
-    },
-  ]);
+import { lang } from "../model/lang.model.js";
+
+export const getlanguages = async (req, res) => {
+  try {
+    const resposne = await lang.find();
+    res.status(201).json({ lang: resposne });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: error.message || "Error while getting lang" });
+  }
+};
+
+export const createlanguages = async (req, res) => {
+  try {
+    await lang.create({ lang: "mongoose" });
+    res.status(201).json({ message: "lang created !" });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: error.message || "Error while creating lang" });
+  }
 };
