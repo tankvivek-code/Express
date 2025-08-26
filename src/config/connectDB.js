@@ -1,12 +1,15 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 
-const MONGO_DB_URI = "mongodb://127.0.0.1:27017/demo";
+dotenv.config();
+
+const MONGO_DB_URI = process.env.MONGO_DB_URI;
 
 export async function connectDB() {
   try {
     await mongoose.connect(MONGO_DB_URI);
-    console.log("MongoDB connect");
+    console.log("MongoDB connected");
   } catch (error) {
-    console.log("Error while connectinf database", error.message);
+    console.log("Error while connecting to database", error.message);
   }
 }
