@@ -15,7 +15,11 @@ export const getUsers = async (req, res) => {
 export const createUser = async (req, res) => {
   try {
     // create sample user
-    await user.create({ username: "Vivek", password: "123" });
+    await user.create({
+      username: "Rahul",
+      password: "123",
+      mobile: "1234567890",
+    });
 
     res.status(201).json({ message: "User created successfully!" });
   } catch (error) {
@@ -47,7 +51,7 @@ export const deleteuser = async (req, res) => {
   }
 };
 
- export const updateuser = async (req, res) => {
+export const updateuser = async (req, res) => {
   try {
     const userId = req.params.id;
     const data = req.body;
